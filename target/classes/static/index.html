@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Directorio de funcionarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+    <aside class="panel">
+        <div class="marca">
+            <span class="sello" aria-hidden="true">D</span>
+            <h1>Directorio de funcionarios</h1>
+        </div>
+
+        <h2 id="titulo-form">Nuevo funcionario</h2>
+        <form id="form-funcionario" novalidate>
+            <input type="hidden" id="id">
+            <label>Nombre completo
+                <input type="text" id="nombre" autocomplete="off" required>
+            </label>
+            <label>Cargo
+                <input type="text" id="cargo" autocomplete="off" required>
+            </label>
+            <label>Departamento
+                <input type="text" id="departamento" autocomplete="off" required>
+            </label>
+            <label>Teléfono <span class="opcional">(opcional)</span>
+                <input type="text" id="telefono" autocomplete="off">
+            </label>
+            <div class="acciones">
+                <button type="submit" class="btn primario" id="btn-guardar">Guardar funcionario</button>
+                <button type="button" class="btn fantasma" id="btn-limpiar">Limpiar</button>
+            </div>
+        </form>
+    </aside>
+
+    <main class="contenido">
+        <header class="cabecera">
+            <h2>Equipo registrado</h2>
+            <p id="contador">Cargando…</p>
+        </header>
+
+        <form id="form-busqueda" class="busqueda">
+            <div class="modos" role="group" aria-label="Tipo de búsqueda">
+                <button type="button" class="modo activo" data-modo="nombre">Nombre</button>
+                <button type="button" class="modo" data-modo="departamento">Departamento</button>
+                <button type="button" class="modo" data-modo="id">ID</button>
+            </div>
+            <input type="text" id="q" placeholder="Escribe parte del nombre" autocomplete="off">
+            <button type="submit" class="btn primario">Buscar</button>
+            <button type="button" class="btn fantasma" id="btn-todos">Ver todos</button>
+        </form>
+
+        <div id="mensaje" class="mensaje" role="status" hidden></div>
+
+        <div class="tabla-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>ID</th><th>Funcionario</th><th>Cargo</th><th>Departamento</th><th>Teléfono</th><th><span class="sr">Acciones</span></th>
+                </tr>
+                </thead>
+                <tbody id="tabla-body"></tbody>
+            </table>
+        </div>
+    </main>
+</div>
+
+<dialog id="dlg">
+    <form method="dialog">
+        <h3>¿Eliminar funcionario?</h3>
+        <p id="dlg-texto"></p>
+        <div class="acciones">
+            <button value="no" class="btn fantasma">Cancelar</button>
+            <button value="si" class="btn peligro">Eliminar</button>
+        </div>
+    </form>
+</dialog>
+
+<script src="js/app.js"></script>
+</body>
+</html>

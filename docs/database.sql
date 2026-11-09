@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS directorio;
+USE directorio;
+
+CREATE TABLE IF NOT EXISTS funcionarios (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    cargo VARCHAR(255) NOT NULL,
+    departamento VARCHAR(255) NOT NULL,
+    telefono VARCHAR(255) NULL
+);

@@ -1,0 +1,101 @@
+:root {
+    --porcelana: #f4f5f8;
+    --papel: #ffffff;
+    --marino: #14213d;
+    --marino-2: #1d2e52;
+    --laton: #b8935a;
+    --laton-claro: #e7d6b4;
+    --texto: #1b2333;
+    --suave: #6b7488;
+    --linea: #e3e6ee;
+    --ok: #1f7a4d;
+    --err: #b3261e;
+    --info: #2b5aa8;
+    --serif: "Fraunces", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: var(--sans); color: var(--texto); background: var(--porcelana); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+.app { display: grid; grid-template-columns: 360px 1fr; min-height: 100vh; }
+
+/* Panel del formulario */
+.panel { background: var(--marino); color: #eef1f7; padding: 36px 30px; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.marca { display: flex; align-items: center; gap: 14px; margin-bottom: 44px; }
+.sello { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; font: 600 22px var(--serif); color: var(--marino); background: linear-gradient(135deg, var(--laton-claro), var(--laton)); flex: none; }
+.marca h1 { font: 500 21px/1.2 var(--serif); margin: 0; letter-spacing: .2px; }
+.panel h2 { font: 500 17px var(--sans); margin: 0 0 18px; color: var(--laton-claro); }
+form#form-funcionario { display: grid; gap: 16px; }
+label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 500; color: #c9d0e0; }
+.opcional { color: #8f9ab3; font-weight: 400; }
+.panel input { padding: 11px 13px; border-radius: 8px; border: 1px solid rgba(255,255,255,.16); background: rgba(255,255,255,.06); color: #fff; font: 400 15px var(--sans); transition: border-color .15s, background .15s; }
+.panel input:focus { outline: none; border-color: var(--laton); background: rgba(255,255,255,.1); box-shadow: 0 0 0 3px rgba(184,147,90,.25); }
+
+/* Botones */
+.acciones { display: flex; gap: 10px; margin-top: 8px; }
+.btn { padding: 11px 18px; border-radius: 8px; border: 1px solid transparent; font: 600 14px var(--sans); cursor: pointer; transition: transform .1s, background .15s, border-color .15s; }
+.btn:active { transform: translateY(1px); }
+.btn:focus-visible, .modo:focus-visible, .fila-btn:focus-visible { outline: 2px solid var(--laton); outline-offset: 2px; }
+.btn.primario { background: linear-gradient(135deg, #c9a46a, var(--laton)); color: #1a1405; }
+.btn.primario:hover { background: linear-gradient(135deg, #d6b277, #c19a60); }
+.btn.fantasma { background: transparent; border-color: rgba(120,130,155,.45); color: inherit; }
+.panel .btn.fantasma { color: #dfe4f0; border-color: rgba(255,255,255,.25); }
+.btn.fantasma:hover { background: rgba(120,130,155,.12); }
+.btn.peligro { background: var(--err); color: #fff; }
+
+/* Contenido */
+.contenido { padding: 40px 44px; min-width: 0; }
+.cabecera { margin-bottom: 26px; }
+.cabecera h2 { font: 600 32px/1.15 var(--serif); margin: 0; color: var(--marino); }
+.cabecera p { margin: 6px 0 0; color: var(--suave); font-size: 15px; }
+
+.busqueda { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
+.modos { display: flex; background: var(--papel); border: 1px solid var(--linea); border-radius: 10px; padding: 4px; }
+.modo { border: 0; background: transparent; padding: 8px 14px; border-radius: 7px; font: 500 13.5px var(--sans); color: var(--suave); cursor: pointer; }
+.modo.activo { background: var(--marino); color: #fff; }
+#q { flex: 1 1 220px; min-width: 0; padding: 11px 14px; border-radius: 10px; border: 1px solid var(--linea); background: var(--papel); font: 400 15px var(--sans); color: var(--texto); }
+#q:focus { outline: none; border-color: var(--laton); box-shadow: 0 0 0 3px rgba(184,147,90,.2); }
+.busqueda .btn.fantasma { border-color: var(--linea); background: var(--papel); }
+
+.mensaje { padding: 12px 16px; border-radius: 10px; margin-bottom: 16px; font-size: 14.5px; font-weight: 500; border-left: 4px solid; }
+.mensaje.exito { background: #e8f5ee; color: var(--ok); border-color: var(--ok); }
+.mensaje.info { background: #e9f0fb; color: var(--info); border-color: var(--info); }
+.mensaje.error { background: #fbeceb; color: var(--err); border-color: var(--err); }
+
+/* Tabla */
+.tabla-wrap { background: var(--papel); border: 1px solid var(--linea); border-radius: 14px; overflow-x: auto; box-shadow: 0 10px 30px -18px rgba(20,33,61,.35); }
+table { width: 100%; border-collapse: collapse; min-width: 720px; }
+th { text-align: left; font: 600 13px var(--sans); color: var(--suave); padding: 14px 18px; border-bottom: 1px solid var(--linea); background: #fafbfd; }
+td { padding: 14px 18px; border-bottom: 1px solid var(--linea); font-size: 14.5px; vertical-align: middle; }
+tbody tr:last-child td { border-bottom: 0; }
+tbody tr:hover { background: #fafbfd; }
+td.id { color: var(--suave); font-variant-numeric: tabular-nums; width: 64px; }
+.persona { display: flex; align-items: center; gap: 12px; font-weight: 600; color: var(--marino); }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--marino); color: var(--laton-claro); display: grid; place-items: center; font: 600 13px var(--sans); flex: none; }
+.pildora { display: inline-block; padding: 4px 11px; border-radius: 999px; background: #f1ebdd; color: #6f5528; font-size: 13px; font-weight: 500; }
+.fila-acciones { display: flex; gap: 6px; justify-content: flex-end; }
+.fila-btn { border: 1px solid var(--linea); background: var(--papel); border-radius: 7px; padding: 6px 12px; font: 500 13px var(--sans); cursor: pointer; color: var(--texto); }
+.fila-btn:hover { border-color: var(--marino); }
+.fila-btn.borrar { color: var(--err); }
+.fila-btn.borrar:hover { border-color: var(--err); background: #fbeceb; }
+
+/* Diálogo de confirmación */
+dialog { border: 0; border-radius: 16px; padding: 0; width: min(420px, 92vw); box-shadow: 0 30px 80px -20px rgba(20,33,61,.55); }
+dialog::backdrop { background: rgba(14,22,40,.55); }
+dialog form { padding: 28px; }
+dialog h3 { font: 600 22px var(--serif); margin: 0 0 8px; color: var(--marino); }
+dialog p { margin: 0 0 22px; color: var(--suave); line-height: 1.5; }
+dialog .acciones { justify-content: flex-end; margin: 0; }
+dialog[open] { animation: aparece .18s ease-out; }
+@keyframes aparece { from { opacity: 0; transform: translateY(8px) scale(.98); } }
+
+@media (max-width: 900px) {
+    .app { grid-template-columns: 1fr; }
+    .panel { position: static; height: auto; }
+    .contenido { padding: 28px 18px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    dialog[open] { animation: none; }
+    * { transition: none !important; }
+}
