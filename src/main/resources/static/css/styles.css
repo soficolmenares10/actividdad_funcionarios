@@ -99,3 +99,21 @@ dialog[open] { animation: aparece .18s ease-out; }
     dialog[open] { animation: none; }
     * { transition: none !important; }
 }
+
+/* Login */
+.login-body { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: var(--marino); }
+.login-card { width: 100%; max-width: 400px; background: var(--papel); border-radius: 16px; padding: 36px 32px; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); }
+.login-card .marca { margin-bottom: 28px; }
+.login-card .marca h1 { color: var(--marino); font-size: 19px; }
+.login-card h2 { font: 600 26px var(--serif); margin: 0 0 6px; color: var(--marino); }
+.login-ayuda { margin: 0 0 20px; color: var(--suave); font-size: 14.5px; }
+.login-card form { display: grid; gap: 16px; }
+.login-card label { color: var(--texto); }
+.login-card input { padding: 11px 13px; border-radius: 8px; border: 1px solid var(--linea); font: 400 15px var(--sans); color: var(--texto); background: #fff; }
+.login-card input:focus { outline: none; border-color: var(--laton); box-shadow: 0 0 0 3px rgba(184,147,90,.25); }
+.login-card .btn { width: 100%; margin-top: 4px; }
+.login-card .btn:disabled { opacity: .6; cursor: wait; }
+
+/* Cerrar sesión */
+.sesion { margin-top: 36px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.12); }
+.sesion .btn { width: 100%; }

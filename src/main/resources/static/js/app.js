@@ -1,4 +1,15 @@
 const API = '/api/v1/funcionarios';
+
+// --- Autenticación (HTTP Basic) ---
+const AUTH = sessionStorage.getItem('auth');
+if (!AUTH) {
+    window.location.replace('login.html');
+}
+
+function cerrarSesion() {
+    sessionStorage.removeItem('auth');
+    window.location.replace('login.html');
+}
 const $ = (id) => document.getElementById(id);
 const form = $('form-funcionario');
 const tbody = $('tabla-body');
@@ -26,9 +37,14 @@ function actualizarContador(n) {
 async function peticion(url, opciones = {}) {
     let res;
     try {
+        opciones.headers = { ...(opciones.headers || {}), 'Authorization': 'Basic ' + AUTH };
         res = await fetch(url, opciones);
     } catch (e) {
         throw new Error('No se pudo conectar con el servidor. Revisa que la aplicación esté en ejecución.');
+    }
+    if (res.status === 401) {
+        cerrarSesion();
+        throw new Error('Tu sesión no es válida. Inicia sesión de nuevo.');
     }
     if (res.status === 204) return { status: 204, data: null };
     let data = null;
@@ -207,5 +223,6 @@ $('btn-todos').addEventListener('click', async () => {
 });
 
 $('btn-limpiar').addEventListener('click', () => { limpiarFormulario(); ocultarMensaje(); });
+$('btn-salir').addEventListener('click', cerrarSesion);
 
-listar();
+if (AUTH) listar();

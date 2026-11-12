@@ -17,3 +17,10 @@ Spring Boot 3 (Java 21, MVC) + MySQL 8. Frontend en HTML, CSS y JavaScript vanil
 | Eliminar | DELETE /{id} | 204 / 404 |
 | Buscar por nombre | GET /?nombre=ana | 200 / 204 |
 | Filtrar por departamento | GET /?departamento=Contabilidad | 200 / 204 |
+
+## Seguridad (Spring Security + HTTP Basic)
+- `config/SecurityConfig.java` protege toda la API `/api/**` con **HTTP Basic**; los archivos estáticos (`login.html`, `css`, `js`) son públicos.
+- Al abrir la app sin sesión se redirige a `login.html`. El formulario valida usuario y contraseña contra `GET /api/v1/auth/me` y guarda la credencial en `sessionStorage` (se borra al cerrar la pestaña o con **Cerrar sesión**).
+- Usuario por defecto: `admin` / `admin123`. Cámbialo con las variables de entorno `APP_USER` y `APP_PASSWORD`.
+- Sin credenciales, la API responde `401`:
+  `curl -u admin:admin123 http://localhost:8080/api/v1/funcionarios`
