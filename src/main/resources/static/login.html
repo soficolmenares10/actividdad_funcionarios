@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Iniciar sesión · Directorio de funcionarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="login-body">
+<main class="login-card">
+    <div class="marca">
+        <span class="sello" aria-hidden="true">D</span>
+        <h1>Directorio de funcionarios</h1>
+    </div>
+    <h2>Iniciar sesión</h2>
+    <p class="login-ayuda">Ingresa tus credenciales para acceder al directorio.</p>
+
+    <div id="login-error" class="mensaje error" role="alert" hidden></div>
+
+    <form id="form-login" novalidate>
+        <label>Usuario
+            <input type="text" id="usuario" autocomplete="username" autofocus required>
+        </label>
+        <label>Contraseña
+            <input type="password" id="clave" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="btn primario" id="btn-entrar">Entrar</button>
+    </form>
+</main>
+<script src="js/login.js"></script>
+</body>
+</html>
